@@ -1,6 +1,6 @@
 import { IAction } from "../interface/iAction";
 import { fetchData } from "../services/fetchData";
-import { IDataItem } from "src/interface/iDataItem";
+import { IDataItem } from "../interface/iDataItem";
 
 export const NAMESPACE_INDEX = "index";
 export interface IIndexModelState {
@@ -21,9 +21,18 @@ export default {
   },
 
   effects: {
+
+    // *onFetch2(action: IAction, { call, put }) {
+    //   return yield fetchData(action.payload);
+    // },
+
     *onFetch(action: IAction, { call, put }) {
       const list = yield fetchData(action.payload);
       yield put({ type: "fetchDone", payload: list });
+
+      // 同步调用 onFetch2
+      // const list2 = yield yield put({ type: "onFetch2", payload: {} });
+      // console.log(3, list2);
     }
   },
 
