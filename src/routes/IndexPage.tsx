@@ -50,6 +50,6 @@ class IndexPage extends React.PureComponent<IProps> {
 
 export default connect(state => {
   return {
-    indexState: state.index
+    indexState: state[NAMESPACE_INDEX]
   };
 })(IndexPage);
